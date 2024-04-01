@@ -2,7 +2,7 @@
 
 #include "Arduino.h"
 
-#define CHANGE_ACCEPT_INTERVAL 50
+#define CHANGE_ACCEPT_INTERVAL 10
 #define TIME_CHANGE_INTERVAL 1000*60*60*24
 
 class PushButton

@@ -34,12 +34,11 @@ void setup() {
 
   //init
   data = new Data();
-  service = new AirsoftBLEService("FlagPost", data);
+  controller = new GameController(&lcd, data);
+  service = new AirsoftBLEService("FlagPost", data, controller);
 
   left = new PushButton(LEFT_BUTTON_GPIO, &data->leftButtonPressed);
   right = new PushButton(RIGHT_BUTTON_GPIO, &data->rightButtonPressed);
-
-  controller = new GameController(&lcd, data);
 }
 
 void loop() {

@@ -1,12 +1,15 @@
 #include "AirsoftBLEService.h"
 
-AirsoftBLEService::AirsoftBLEService(std::string name, Data* data){
+AirsoftBLEService::AirsoftBLEService(std::string name, Data* data, GameController* controller){
   this->data = data;
+  this->controller = controller;
 
   //create handlers
     this->airsoftBLEServerCallbacks = new AirsoftBLEServerCallbacks(this->data);
     this->voltageCallbackHandler = new VoltageCallbackHandler(this->data);
     this->timeCallbackHandler = new TimeCallbackHandler();
+    this->gameStateCallbackHandler = new GameStateCallbackHandler(this->data, this->controller);
+    this->settingsCallbackHandler = new SettingsCallbackHandler(this->data, this->controller);
     
 
   //init
@@ -32,16 +35,20 @@ AirsoftBLEService::AirsoftBLEService(std::string name, Data* data){
                     );      
   pTimeCharacteristic->setAccessPermissions(ESP_GATT_PERM_READ_ENCRYPTED | ESP_GATT_PERM_WRITE_ENCRYPTED);      
   pTimeCharacteristic->setCallbacks(this->timeCallbackHandler);
-  
 
-  // Create a BLE Descriptors
-  //pVoltageDescr = new BLEDescriptor(VOLTAGE_DESCRIPTOR_UUID, 2);
-  //pVoltageDescr->setCallbacks(this->voltageCallbackHandler);
-  //pVoltageCharacteristic->addDescriptor(pVoltageDescr);
+  pSettingsCharacteristic = pService->createCharacteristic(
+                      SETTINGS_CHARACTERISTIC_UUID,
+                      BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE
+                    );      
+  pSettingsCharacteristic->setAccessPermissions(ESP_GATT_PERM_READ_ENCRYPTED | ESP_GATT_PERM_WRITE_ENCRYPTED);      
+  pSettingsCharacteristic->setCallbacks(this->settingsCallbackHandler);
 
-  //pTimeDescr = new BLEDescriptor(TIME_DESCRIPTOR_UUID, 7);
-  //pTimeDescr->setCallbacks(this->timeCallbackHandler);
-  //pTimeCharacteristic->addDescriptor(pTimeDescr);
+  pGameStateCharacteristic = pService->createCharacteristic(
+                      GAME_STATE_CHARACTERISTIC_UUID,
+                      BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE
+                    );      
+  pGameStateCharacteristic->setAccessPermissions(ESP_GATT_PERM_READ_ENCRYPTED | ESP_GATT_PERM_WRITE_ENCRYPTED);      
+  pGameStateCharacteristic->setCallbacks(this->gameStateCallbackHandler);
   
 
   // Start the service

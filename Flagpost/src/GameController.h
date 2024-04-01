@@ -3,11 +3,7 @@
 #include <Bonezegei_LCD1602_I2C.h>
 #include <Data.h>
 
-#define DISPLAY_INTERVAL 100
 #define DISPLAY_SIZE_X 16
-
-#define UNCLAIM_TIME 2000
-#define CLAIM_TIME 4000
 
 #define NO_TEAM_CLAIM '\0'
 
@@ -34,6 +30,7 @@ private:
     void handleCapStart(unsigned long timestamp);
 
 public:
+    void renameTeam(char oldTeam, char newTeam);
     void loop();
     GameController(Bonezegei_LCD1602_I2C* lcd, Data* data);
 };
