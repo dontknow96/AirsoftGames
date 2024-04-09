@@ -16,7 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DeviceScannerState {
-  Iterable<ScanResult> get devices => throw _privateConstructorUsedError;
+  Iterable<BluetoothDevice> get foundDevices =>
+      throw _privateConstructorUsedError;
+  Iterable<BluetoothDevice> get connectedDevices =>
+      throw _privateConstructorUsedError;
   bool get scanning => throw _privateConstructorUsedError;
   DeviceScannerErrorState get errorState => throw _privateConstructorUsedError;
 
@@ -32,7 +35,8 @@ abstract class $DeviceScannerStateCopyWith<$Res> {
       _$DeviceScannerStateCopyWithImpl<$Res, DeviceScannerState>;
   @useResult
   $Res call(
-      {Iterable<ScanResult> devices,
+      {Iterable<BluetoothDevice> foundDevices,
+      Iterable<BluetoothDevice> connectedDevices,
       bool scanning,
       DeviceScannerErrorState errorState});
 }
@@ -50,15 +54,20 @@ class _$DeviceScannerStateCopyWithImpl<$Res, $Val extends DeviceScannerState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? devices = null,
+    Object? foundDevices = null,
+    Object? connectedDevices = null,
     Object? scanning = null,
     Object? errorState = null,
   }) {
     return _then(_value.copyWith(
-      devices: null == devices
-          ? _value.devices
-          : devices // ignore: cast_nullable_to_non_nullable
-              as Iterable<ScanResult>,
+      foundDevices: null == foundDevices
+          ? _value.foundDevices
+          : foundDevices // ignore: cast_nullable_to_non_nullable
+              as Iterable<BluetoothDevice>,
+      connectedDevices: null == connectedDevices
+          ? _value.connectedDevices
+          : connectedDevices // ignore: cast_nullable_to_non_nullable
+              as Iterable<BluetoothDevice>,
       scanning: null == scanning
           ? _value.scanning
           : scanning // ignore: cast_nullable_to_non_nullable
@@ -80,7 +89,8 @@ abstract class _$$DeviceScannerStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Iterable<ScanResult> devices,
+      {Iterable<BluetoothDevice> foundDevices,
+      Iterable<BluetoothDevice> connectedDevices,
       bool scanning,
       DeviceScannerErrorState errorState});
 }
@@ -96,15 +106,20 @@ class __$$DeviceScannerStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? devices = null,
+    Object? foundDevices = null,
+    Object? connectedDevices = null,
     Object? scanning = null,
     Object? errorState = null,
   }) {
     return _then(_$DeviceScannerStateImpl(
-      devices: null == devices
-          ? _value.devices
-          : devices // ignore: cast_nullable_to_non_nullable
-              as Iterable<ScanResult>,
+      foundDevices: null == foundDevices
+          ? _value.foundDevices
+          : foundDevices // ignore: cast_nullable_to_non_nullable
+              as Iterable<BluetoothDevice>,
+      connectedDevices: null == connectedDevices
+          ? _value.connectedDevices
+          : connectedDevices // ignore: cast_nullable_to_non_nullable
+              as Iterable<BluetoothDevice>,
       scanning: null == scanning
           ? _value.scanning
           : scanning // ignore: cast_nullable_to_non_nullable
@@ -121,13 +136,17 @@ class __$$DeviceScannerStateImplCopyWithImpl<$Res>
 
 class _$DeviceScannerStateImpl implements _DeviceScannerState {
   const _$DeviceScannerStateImpl(
-      {this.devices = const [],
+      {this.foundDevices = const [],
+      this.connectedDevices = const [],
       this.scanning = false,
       this.errorState = DeviceScannerErrorState.none});
 
   @override
   @JsonKey()
-  final Iterable<ScanResult> devices;
+  final Iterable<BluetoothDevice> foundDevices;
+  @override
+  @JsonKey()
+  final Iterable<BluetoothDevice> connectedDevices;
   @override
   @JsonKey()
   final bool scanning;
@@ -137,7 +156,7 @@ class _$DeviceScannerStateImpl implements _DeviceScannerState {
 
   @override
   String toString() {
-    return 'DeviceScannerState(devices: $devices, scanning: $scanning, errorState: $errorState)';
+    return 'DeviceScannerState(foundDevices: $foundDevices, connectedDevices: $connectedDevices, scanning: $scanning, errorState: $errorState)';
   }
 
   @override
@@ -145,7 +164,10 @@ class _$DeviceScannerStateImpl implements _DeviceScannerState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeviceScannerStateImpl &&
-            const DeepCollectionEquality().equals(other.devices, devices) &&
+            const DeepCollectionEquality()
+                .equals(other.foundDevices, foundDevices) &&
+            const DeepCollectionEquality()
+                .equals(other.connectedDevices, connectedDevices) &&
             (identical(other.scanning, scanning) ||
                 other.scanning == scanning) &&
             (identical(other.errorState, errorState) ||
@@ -153,8 +175,12 @@ class _$DeviceScannerStateImpl implements _DeviceScannerState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(devices), scanning, errorState);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(foundDevices),
+      const DeepCollectionEquality().hash(connectedDevices),
+      scanning,
+      errorState);
 
   @JsonKey(ignore: true)
   @override
@@ -166,12 +192,15 @@ class _$DeviceScannerStateImpl implements _DeviceScannerState {
 
 abstract class _DeviceScannerState implements DeviceScannerState {
   const factory _DeviceScannerState(
-      {final Iterable<ScanResult> devices,
+      {final Iterable<BluetoothDevice> foundDevices,
+      final Iterable<BluetoothDevice> connectedDevices,
       final bool scanning,
       final DeviceScannerErrorState errorState}) = _$DeviceScannerStateImpl;
 
   @override
-  Iterable<ScanResult> get devices;
+  Iterable<BluetoothDevice> get foundDevices;
+  @override
+  Iterable<BluetoothDevice> get connectedDevices;
   @override
   bool get scanning;
   @override

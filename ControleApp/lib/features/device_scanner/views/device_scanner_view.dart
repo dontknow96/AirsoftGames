@@ -7,9 +7,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 class DeviceScannerView extends StatelessWidget {
-  const DeviceScannerView({required this.onConnect, super.key});
+  const DeviceScannerView({required this.onOpen, super.key});
 
-  final void Function(BluetoothDevice) onConnect;
+  final void Function(BluetoothDevice, BuildContext) onOpen;
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +23,15 @@ class DeviceScannerView extends StatelessWidget {
           ),
           body: Column(
             children: [
-              for (final scanResult in state.devices)
+              for (final device in state.connectedDevices)
                 DeviceTile(
-                  onConnect: onConnect,
-                  scanResult: scanResult,
+                  onOpen: onOpen,
+                  device: device,
+                ),
+              for (final device in state.foundDevices.where((element) => !state.connectedDevices.contains(element)))
+                DeviceTile(
+                  onOpen: onOpen,
+                  device: device,
                 ),
             ],
           ),

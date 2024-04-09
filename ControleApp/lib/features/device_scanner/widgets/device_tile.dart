@@ -1,31 +1,47 @@
+import 'package:controleapp/features/device_scanner/blocs/device_scanner_bloc.dart';
+import 'package:controleapp/features/device_scanner/blocs/device_scanner_event.dart';
+import 'package:controleapp/features/device_scanner/blocs/device_scanner_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 class DeviceTile extends StatelessWidget {
   const DeviceTile({
-    required this.onConnect,
-    required this.scanResult,
+    required this.onOpen,
+    required this.device,
     super.key,
   });
 
-  final void Function(BluetoothDevice) onConnect;
-  final ScanResult scanResult;
+  final void Function(BluetoothDevice, BuildContext) onOpen;
+  final BluetoothDevice device;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          scanResult.device.advName == ''
-              ? scanResult.device.remoteId.str
-              : scanResult.device.advName,
-        ),
-        Expanded(child: Container()),
-        ElevatedButton(
-          onPressed: () => onConnect(scanResult.device),
-          child: const Center(child: Text('connect')),
-        ),
-      ],
+    final deviceScannerBloc = context.read<DeviceScannerBloc>();
+
+    return BlocBuilder<DeviceScannerBloc, DeviceScannerState>(
+      builder: (BuildContext context, DeviceScannerState state) {
+        return Row(
+          children: [
+            Text(
+              device.advName == ''
+                  ? device.remoteId.str
+                  : device.advName,
+            ),
+            Expanded(child: Container()),
+            if (device.isConnected)
+              ElevatedButton(
+                onPressed: () => onOpen(device, context),
+                child: const Center(child: Text('open')),
+              )
+            else
+              ElevatedButton(
+                onPressed: () => deviceScannerBloc.add(Connect(device)),
+                child: const Center(child: Text('connect')),
+              ),
+          ],
+        );
+      },
     );
   }
 }

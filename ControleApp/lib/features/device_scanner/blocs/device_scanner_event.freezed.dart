@@ -21,6 +21,8 @@ mixin _$DeviceScannerEvent {
     required TResult Function() scan,
     required TResult Function() stopScan,
     required TResult Function() init,
+    required TResult Function(BluetoothDevice device) connect,
+    required TResult Function(BluetoothDevice device) disconnect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +30,8 @@ mixin _$DeviceScannerEvent {
     TResult? Function()? scan,
     TResult? Function()? stopScan,
     TResult? Function()? init,
+    TResult? Function(BluetoothDevice device)? connect,
+    TResult? Function(BluetoothDevice device)? disconnect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +39,8 @@ mixin _$DeviceScannerEvent {
     TResult Function()? scan,
     TResult Function()? stopScan,
     TResult Function()? init,
+    TResult Function(BluetoothDevice device)? connect,
+    TResult Function(BluetoothDevice device)? disconnect,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +49,8 @@ mixin _$DeviceScannerEvent {
     required TResult Function(Scan value) scan,
     required TResult Function(StopScan value) stopScan,
     required TResult Function(Init value) init,
+    required TResult Function(Connect value) connect,
+    required TResult Function(Disconnect value) disconnect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +58,8 @@ mixin _$DeviceScannerEvent {
     TResult? Function(Scan value)? scan,
     TResult? Function(StopScan value)? stopScan,
     TResult? Function(Init value)? init,
+    TResult? Function(Connect value)? connect,
+    TResult? Function(Disconnect value)? disconnect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +67,8 @@ mixin _$DeviceScannerEvent {
     TResult Function(Scan value)? scan,
     TResult Function(StopScan value)? stopScan,
     TResult Function(Init value)? init,
+    TResult Function(Connect value)? connect,
+    TResult Function(Disconnect value)? disconnect,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +132,8 @@ class _$ScanImpl implements Scan {
     required TResult Function() scan,
     required TResult Function() stopScan,
     required TResult Function() init,
+    required TResult Function(BluetoothDevice device) connect,
+    required TResult Function(BluetoothDevice device) disconnect,
   }) {
     return scan();
   }
@@ -130,6 +144,8 @@ class _$ScanImpl implements Scan {
     TResult? Function()? scan,
     TResult? Function()? stopScan,
     TResult? Function()? init,
+    TResult? Function(BluetoothDevice device)? connect,
+    TResult? Function(BluetoothDevice device)? disconnect,
   }) {
     return scan?.call();
   }
@@ -140,6 +156,8 @@ class _$ScanImpl implements Scan {
     TResult Function()? scan,
     TResult Function()? stopScan,
     TResult Function()? init,
+    TResult Function(BluetoothDevice device)? connect,
+    TResult Function(BluetoothDevice device)? disconnect,
     required TResult orElse(),
   }) {
     if (scan != null) {
@@ -154,6 +172,8 @@ class _$ScanImpl implements Scan {
     required TResult Function(Scan value) scan,
     required TResult Function(StopScan value) stopScan,
     required TResult Function(Init value) init,
+    required TResult Function(Connect value) connect,
+    required TResult Function(Disconnect value) disconnect,
   }) {
     return scan(this);
   }
@@ -164,6 +184,8 @@ class _$ScanImpl implements Scan {
     TResult? Function(Scan value)? scan,
     TResult? Function(StopScan value)? stopScan,
     TResult? Function(Init value)? init,
+    TResult? Function(Connect value)? connect,
+    TResult? Function(Disconnect value)? disconnect,
   }) {
     return scan?.call(this);
   }
@@ -174,6 +196,8 @@ class _$ScanImpl implements Scan {
     TResult Function(Scan value)? scan,
     TResult Function(StopScan value)? stopScan,
     TResult Function(Init value)? init,
+    TResult Function(Connect value)? connect,
+    TResult Function(Disconnect value)? disconnect,
     required TResult orElse(),
   }) {
     if (scan != null) {
@@ -228,6 +252,8 @@ class _$StopScanImpl implements StopScan {
     required TResult Function() scan,
     required TResult Function() stopScan,
     required TResult Function() init,
+    required TResult Function(BluetoothDevice device) connect,
+    required TResult Function(BluetoothDevice device) disconnect,
   }) {
     return stopScan();
   }
@@ -238,6 +264,8 @@ class _$StopScanImpl implements StopScan {
     TResult? Function()? scan,
     TResult? Function()? stopScan,
     TResult? Function()? init,
+    TResult? Function(BluetoothDevice device)? connect,
+    TResult? Function(BluetoothDevice device)? disconnect,
   }) {
     return stopScan?.call();
   }
@@ -248,6 +276,8 @@ class _$StopScanImpl implements StopScan {
     TResult Function()? scan,
     TResult Function()? stopScan,
     TResult Function()? init,
+    TResult Function(BluetoothDevice device)? connect,
+    TResult Function(BluetoothDevice device)? disconnect,
     required TResult orElse(),
   }) {
     if (stopScan != null) {
@@ -262,6 +292,8 @@ class _$StopScanImpl implements StopScan {
     required TResult Function(Scan value) scan,
     required TResult Function(StopScan value) stopScan,
     required TResult Function(Init value) init,
+    required TResult Function(Connect value) connect,
+    required TResult Function(Disconnect value) disconnect,
   }) {
     return stopScan(this);
   }
@@ -272,6 +304,8 @@ class _$StopScanImpl implements StopScan {
     TResult? Function(Scan value)? scan,
     TResult? Function(StopScan value)? stopScan,
     TResult? Function(Init value)? init,
+    TResult? Function(Connect value)? connect,
+    TResult? Function(Disconnect value)? disconnect,
   }) {
     return stopScan?.call(this);
   }
@@ -282,6 +316,8 @@ class _$StopScanImpl implements StopScan {
     TResult Function(Scan value)? scan,
     TResult Function(StopScan value)? stopScan,
     TResult Function(Init value)? init,
+    TResult Function(Connect value)? connect,
+    TResult Function(Disconnect value)? disconnect,
     required TResult orElse(),
   }) {
     if (stopScan != null) {
@@ -335,6 +371,8 @@ class _$InitImpl implements Init {
     required TResult Function() scan,
     required TResult Function() stopScan,
     required TResult Function() init,
+    required TResult Function(BluetoothDevice device) connect,
+    required TResult Function(BluetoothDevice device) disconnect,
   }) {
     return init();
   }
@@ -345,6 +383,8 @@ class _$InitImpl implements Init {
     TResult? Function()? scan,
     TResult? Function()? stopScan,
     TResult? Function()? init,
+    TResult? Function(BluetoothDevice device)? connect,
+    TResult? Function(BluetoothDevice device)? disconnect,
   }) {
     return init?.call();
   }
@@ -355,6 +395,8 @@ class _$InitImpl implements Init {
     TResult Function()? scan,
     TResult Function()? stopScan,
     TResult Function()? init,
+    TResult Function(BluetoothDevice device)? connect,
+    TResult Function(BluetoothDevice device)? disconnect,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -369,6 +411,8 @@ class _$InitImpl implements Init {
     required TResult Function(Scan value) scan,
     required TResult Function(StopScan value) stopScan,
     required TResult Function(Init value) init,
+    required TResult Function(Connect value) connect,
+    required TResult Function(Disconnect value) disconnect,
   }) {
     return init(this);
   }
@@ -379,6 +423,8 @@ class _$InitImpl implements Init {
     TResult? Function(Scan value)? scan,
     TResult? Function(StopScan value)? stopScan,
     TResult? Function(Init value)? init,
+    TResult? Function(Connect value)? connect,
+    TResult? Function(Disconnect value)? disconnect,
   }) {
     return init?.call(this);
   }
@@ -389,6 +435,8 @@ class _$InitImpl implements Init {
     TResult Function(Scan value)? scan,
     TResult Function(StopScan value)? stopScan,
     TResult Function(Init value)? init,
+    TResult Function(Connect value)? connect,
+    TResult Function(Disconnect value)? disconnect,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -400,4 +448,306 @@ class _$InitImpl implements Init {
 
 abstract class Init implements DeviceScannerEvent {
   const factory Init() = _$InitImpl;
+}
+
+/// @nodoc
+abstract class _$$ConnectImplCopyWith<$Res> {
+  factory _$$ConnectImplCopyWith(
+          _$ConnectImpl value, $Res Function(_$ConnectImpl) then) =
+      __$$ConnectImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BluetoothDevice device});
+}
+
+/// @nodoc
+class __$$ConnectImplCopyWithImpl<$Res>
+    extends _$DeviceScannerEventCopyWithImpl<$Res, _$ConnectImpl>
+    implements _$$ConnectImplCopyWith<$Res> {
+  __$$ConnectImplCopyWithImpl(
+      _$ConnectImpl _value, $Res Function(_$ConnectImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? device = null,
+  }) {
+    return _then(_$ConnectImpl(
+      null == device
+          ? _value.device
+          : device // ignore: cast_nullable_to_non_nullable
+              as BluetoothDevice,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ConnectImpl implements Connect {
+  const _$ConnectImpl(this.device);
+
+  @override
+  final BluetoothDevice device;
+
+  @override
+  String toString() {
+    return 'DeviceScannerEvent.connect(device: $device)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ConnectImpl &&
+            (identical(other.device, device) || other.device == device));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, device);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ConnectImplCopyWith<_$ConnectImpl> get copyWith =>
+      __$$ConnectImplCopyWithImpl<_$ConnectImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() scan,
+    required TResult Function() stopScan,
+    required TResult Function() init,
+    required TResult Function(BluetoothDevice device) connect,
+    required TResult Function(BluetoothDevice device) disconnect,
+  }) {
+    return connect(device);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? scan,
+    TResult? Function()? stopScan,
+    TResult? Function()? init,
+    TResult? Function(BluetoothDevice device)? connect,
+    TResult? Function(BluetoothDevice device)? disconnect,
+  }) {
+    return connect?.call(device);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? scan,
+    TResult Function()? stopScan,
+    TResult Function()? init,
+    TResult Function(BluetoothDevice device)? connect,
+    TResult Function(BluetoothDevice device)? disconnect,
+    required TResult orElse(),
+  }) {
+    if (connect != null) {
+      return connect(device);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Scan value) scan,
+    required TResult Function(StopScan value) stopScan,
+    required TResult Function(Init value) init,
+    required TResult Function(Connect value) connect,
+    required TResult Function(Disconnect value) disconnect,
+  }) {
+    return connect(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Scan value)? scan,
+    TResult? Function(StopScan value)? stopScan,
+    TResult? Function(Init value)? init,
+    TResult? Function(Connect value)? connect,
+    TResult? Function(Disconnect value)? disconnect,
+  }) {
+    return connect?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Scan value)? scan,
+    TResult Function(StopScan value)? stopScan,
+    TResult Function(Init value)? init,
+    TResult Function(Connect value)? connect,
+    TResult Function(Disconnect value)? disconnect,
+    required TResult orElse(),
+  }) {
+    if (connect != null) {
+      return connect(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Connect implements DeviceScannerEvent {
+  const factory Connect(final BluetoothDevice device) = _$ConnectImpl;
+
+  BluetoothDevice get device;
+  @JsonKey(ignore: true)
+  _$$ConnectImplCopyWith<_$ConnectImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DisconnectImplCopyWith<$Res> {
+  factory _$$DisconnectImplCopyWith(
+          _$DisconnectImpl value, $Res Function(_$DisconnectImpl) then) =
+      __$$DisconnectImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BluetoothDevice device});
+}
+
+/// @nodoc
+class __$$DisconnectImplCopyWithImpl<$Res>
+    extends _$DeviceScannerEventCopyWithImpl<$Res, _$DisconnectImpl>
+    implements _$$DisconnectImplCopyWith<$Res> {
+  __$$DisconnectImplCopyWithImpl(
+      _$DisconnectImpl _value, $Res Function(_$DisconnectImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? device = null,
+  }) {
+    return _then(_$DisconnectImpl(
+      null == device
+          ? _value.device
+          : device // ignore: cast_nullable_to_non_nullable
+              as BluetoothDevice,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DisconnectImpl implements Disconnect {
+  const _$DisconnectImpl(this.device);
+
+  @override
+  final BluetoothDevice device;
+
+  @override
+  String toString() {
+    return 'DeviceScannerEvent.disconnect(device: $device)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DisconnectImpl &&
+            (identical(other.device, device) || other.device == device));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, device);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DisconnectImplCopyWith<_$DisconnectImpl> get copyWith =>
+      __$$DisconnectImplCopyWithImpl<_$DisconnectImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() scan,
+    required TResult Function() stopScan,
+    required TResult Function() init,
+    required TResult Function(BluetoothDevice device) connect,
+    required TResult Function(BluetoothDevice device) disconnect,
+  }) {
+    return disconnect(device);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? scan,
+    TResult? Function()? stopScan,
+    TResult? Function()? init,
+    TResult? Function(BluetoothDevice device)? connect,
+    TResult? Function(BluetoothDevice device)? disconnect,
+  }) {
+    return disconnect?.call(device);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? scan,
+    TResult Function()? stopScan,
+    TResult Function()? init,
+    TResult Function(BluetoothDevice device)? connect,
+    TResult Function(BluetoothDevice device)? disconnect,
+    required TResult orElse(),
+  }) {
+    if (disconnect != null) {
+      return disconnect(device);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Scan value) scan,
+    required TResult Function(StopScan value) stopScan,
+    required TResult Function(Init value) init,
+    required TResult Function(Connect value) connect,
+    required TResult Function(Disconnect value) disconnect,
+  }) {
+    return disconnect(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Scan value)? scan,
+    TResult? Function(StopScan value)? stopScan,
+    TResult? Function(Init value)? init,
+    TResult? Function(Connect value)? connect,
+    TResult? Function(Disconnect value)? disconnect,
+  }) {
+    return disconnect?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Scan value)? scan,
+    TResult Function(StopScan value)? stopScan,
+    TResult Function(Init value)? init,
+    TResult Function(Connect value)? connect,
+    TResult Function(Disconnect value)? disconnect,
+    required TResult orElse(),
+  }) {
+    if (disconnect != null) {
+      return disconnect(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Disconnect implements DeviceScannerEvent {
+  const factory Disconnect(final BluetoothDevice device) = _$DisconnectImpl;
+
+  BluetoothDevice get device;
+  @JsonKey(ignore: true)
+  _$$DisconnectImplCopyWith<_$DisconnectImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
