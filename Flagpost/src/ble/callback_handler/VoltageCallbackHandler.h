@@ -1,6 +1,7 @@
 #pragma once
 
 #include <data.h>
+#include "helper.h"
 
 #include <BLEDevice.h>
 #include <BLEServer.h>
@@ -15,7 +16,6 @@ private:
 	Data* data;
 public:
 	virtual void onRead(BLECharacteristic* pCharacteristic);
-	virtual void onWrite(BLECharacteristic* pCharacteristic);
 
     VoltageCallbackHandler(Data* data);
 };

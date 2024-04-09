@@ -39,3 +39,23 @@ void writeUint16ToUint8Array(uint8_t* target, uint16_t* source){
 	target[0] = ((u_int8_t*)(source))[1];
 	target[1] = ((u_int8_t*)(source))[0];
 }
+
+
+void writeUint8ArrayFloat(float_t* target, uint8_t* source){
+	uint8_t* hack = (uint8_t*)target;
+
+	*hack += source[0];
+	*hack = *hack << 8;
+	*hack += source[1];
+	*hack = *hack << 8;
+	*hack += source[2];
+	*hack = *hack << 8;
+	*hack += source[3];
+}
+
+void writeFloatToUint8Array(uint8_t* target, float_t* source){
+	target[0] = ((u_int8_t*)(source))[3];
+	target[1] = ((u_int8_t*)(source))[2];
+	target[2] = ((u_int8_t*)(source))[1];
+	target[3] = ((u_int8_t*)(source))[0];
+}

@@ -5,14 +5,9 @@ VoltageCallbackHandler::VoltageCallbackHandler(Data* data){
 }
 
 void VoltageCallbackHandler::onRead(BLECharacteristic* pCharacteristic){
-	uint8_t readData[2];
+	uint8_t readData[4];
 	
-	readData[0] = (uint8_t)this->data->voltage;
-	readData[1] = (uint8_t)(this->data->voltage*100)%100;
-	
+	writeFloatToUint8Array(readData, &data->voltage);
 
 	pCharacteristic->setValue(readData,2);
-}
-
-void VoltageCallbackHandler::onWrite(BLECharacteristic* pCharacteristic){
 }
