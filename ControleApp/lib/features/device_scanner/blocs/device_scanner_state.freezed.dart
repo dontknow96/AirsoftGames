@@ -21,6 +21,7 @@ mixin _$DeviceScannerState {
   Iterable<BluetoothDevice> get connectedDevices =>
       throw _privateConstructorUsedError;
   bool get scanning => throw _privateConstructorUsedError;
+  bool get connecting => throw _privateConstructorUsedError;
   DeviceScannerErrorState get errorState => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -38,6 +39,7 @@ abstract class $DeviceScannerStateCopyWith<$Res> {
       {Iterable<BluetoothDevice> foundDevices,
       Iterable<BluetoothDevice> connectedDevices,
       bool scanning,
+      bool connecting,
       DeviceScannerErrorState errorState});
 }
 
@@ -57,6 +59,7 @@ class _$DeviceScannerStateCopyWithImpl<$Res, $Val extends DeviceScannerState>
     Object? foundDevices = null,
     Object? connectedDevices = null,
     Object? scanning = null,
+    Object? connecting = null,
     Object? errorState = null,
   }) {
     return _then(_value.copyWith(
@@ -71,6 +74,10 @@ class _$DeviceScannerStateCopyWithImpl<$Res, $Val extends DeviceScannerState>
       scanning: null == scanning
           ? _value.scanning
           : scanning // ignore: cast_nullable_to_non_nullable
+              as bool,
+      connecting: null == connecting
+          ? _value.connecting
+          : connecting // ignore: cast_nullable_to_non_nullable
               as bool,
       errorState: null == errorState
           ? _value.errorState
@@ -92,6 +99,7 @@ abstract class _$$DeviceScannerStateImplCopyWith<$Res>
       {Iterable<BluetoothDevice> foundDevices,
       Iterable<BluetoothDevice> connectedDevices,
       bool scanning,
+      bool connecting,
       DeviceScannerErrorState errorState});
 }
 
@@ -109,6 +117,7 @@ class __$$DeviceScannerStateImplCopyWithImpl<$Res>
     Object? foundDevices = null,
     Object? connectedDevices = null,
     Object? scanning = null,
+    Object? connecting = null,
     Object? errorState = null,
   }) {
     return _then(_$DeviceScannerStateImpl(
@@ -123,6 +132,10 @@ class __$$DeviceScannerStateImplCopyWithImpl<$Res>
       scanning: null == scanning
           ? _value.scanning
           : scanning // ignore: cast_nullable_to_non_nullable
+              as bool,
+      connecting: null == connecting
+          ? _value.connecting
+          : connecting // ignore: cast_nullable_to_non_nullable
               as bool,
       errorState: null == errorState
           ? _value.errorState
@@ -139,6 +152,7 @@ class _$DeviceScannerStateImpl implements _DeviceScannerState {
       {this.foundDevices = const [],
       this.connectedDevices = const [],
       this.scanning = false,
+      this.connecting = false,
       this.errorState = DeviceScannerErrorState.none});
 
   @override
@@ -152,11 +166,14 @@ class _$DeviceScannerStateImpl implements _DeviceScannerState {
   final bool scanning;
   @override
   @JsonKey()
+  final bool connecting;
+  @override
+  @JsonKey()
   final DeviceScannerErrorState errorState;
 
   @override
   String toString() {
-    return 'DeviceScannerState(foundDevices: $foundDevices, connectedDevices: $connectedDevices, scanning: $scanning, errorState: $errorState)';
+    return 'DeviceScannerState(foundDevices: $foundDevices, connectedDevices: $connectedDevices, scanning: $scanning, connecting: $connecting, errorState: $errorState)';
   }
 
   @override
@@ -170,6 +187,8 @@ class _$DeviceScannerStateImpl implements _DeviceScannerState {
                 .equals(other.connectedDevices, connectedDevices) &&
             (identical(other.scanning, scanning) ||
                 other.scanning == scanning) &&
+            (identical(other.connecting, connecting) ||
+                other.connecting == connecting) &&
             (identical(other.errorState, errorState) ||
                 other.errorState == errorState));
   }
@@ -180,6 +199,7 @@ class _$DeviceScannerStateImpl implements _DeviceScannerState {
       const DeepCollectionEquality().hash(foundDevices),
       const DeepCollectionEquality().hash(connectedDevices),
       scanning,
+      connecting,
       errorState);
 
   @JsonKey(ignore: true)
@@ -195,6 +215,7 @@ abstract class _DeviceScannerState implements DeviceScannerState {
       {final Iterable<BluetoothDevice> foundDevices,
       final Iterable<BluetoothDevice> connectedDevices,
       final bool scanning,
+      final bool connecting,
       final DeviceScannerErrorState errorState}) = _$DeviceScannerStateImpl;
 
   @override
@@ -203,6 +224,8 @@ abstract class _DeviceScannerState implements DeviceScannerState {
   Iterable<BluetoothDevice> get connectedDevices;
   @override
   bool get scanning;
+  @override
+  bool get connecting;
   @override
   DeviceScannerErrorState get errorState;
   @override

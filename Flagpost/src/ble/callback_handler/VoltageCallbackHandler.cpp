@@ -9,5 +9,5 @@ void VoltageCallbackHandler::onRead(BLECharacteristic* pCharacteristic){
 	
 	writeFloatToUint8Array(readData, &data->voltage);
 
-	pCharacteristic->setValue(readData,2);
+	pCharacteristic->setValue(readData,4);
 }

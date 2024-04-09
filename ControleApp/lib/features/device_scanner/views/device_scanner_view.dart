@@ -27,11 +27,13 @@ class DeviceScannerView extends StatelessWidget {
                 DeviceTile(
                   onOpen: onOpen,
                   device: device,
+                  enabled: !state.connecting,
                 ),
               for (final device in state.foundDevices.where((element) => !state.connectedDevices.contains(element)))
                 DeviceTile(
                   onOpen: onOpen,
                   device: device,
+                  enabled: !state.connecting,
                 ),
             ],
           ),

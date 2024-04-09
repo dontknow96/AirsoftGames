@@ -9,11 +9,13 @@ class DeviceTile extends StatelessWidget {
   const DeviceTile({
     required this.onOpen,
     required this.device,
+    required this.enabled,
     super.key,
   });
 
   final void Function(BluetoothDevice, BuildContext) onOpen;
   final BluetoothDevice device;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class DeviceTile extends StatelessWidget {
               )
             else
               ElevatedButton(
-                onPressed: () => deviceScannerBloc.add(Connect(device)),
+                onPressed: () => enabled ? deviceScannerBloc.add(Connect(device)) : null,
                 child: const Center(child: Text('connect')),
               ),
           ],

@@ -9,6 +9,7 @@ class DeviceScannerState with _$DeviceScannerState {
     @Default([]) Iterable<BluetoothDevice> foundDevices,
     @Default([]) Iterable<BluetoothDevice> connectedDevices,
     @Default(false) bool scanning,
+    @Default(false) bool connecting,
     @Default(DeviceScannerErrorState.none) DeviceScannerErrorState errorState ,
   }) = _DeviceScannerState;
 }

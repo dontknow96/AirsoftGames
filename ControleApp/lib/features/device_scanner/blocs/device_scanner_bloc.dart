@@ -22,19 +22,30 @@ class DeviceScannerBloc extends Bloc<DeviceScannerEvent, DeviceScannerState> {
   }
 
   FutureOr<void> _stopScan(
-      StopScan event,
-      Emitter<DeviceScannerState> emit,
-      ) async {
+    StopScan event,
+    Emitter<DeviceScannerState> emit,
+  ) async {
     await FlutterBluePlus.stopScan();
   }
 
   FutureOr<void> _connect(
-      Connect event,
-      Emitter<DeviceScannerState> emit,
-      ) async {
-    await event.device.connect();
+    Connect event,
+    Emitter<DeviceScannerState> emit,
+  ) async {
+    emit(state.copyWith(connecting: true));
 
-    emit(state.copyWith(connectedDevices: FlutterBluePlus.connectedDevices));
+    try{
+      await event.device.connect(timeout: const Duration(seconds: 3));
+    }catch(e){
+      //didnt work for whatever reason
+    }
+
+    emit(
+      state.copyWith(
+        connectedDevices: FlutterBluePlus.connectedDevices,
+        connecting: false,
+      ),
+    );
   }
 
   FutureOr<void> _init(
@@ -43,7 +54,9 @@ class DeviceScannerBloc extends Bloc<DeviceScannerEvent, DeviceScannerState> {
   ) async {
     final scanTask = emit.forEach(
       FlutterBluePlus.scanResults,
-      onData: (devices) => state.copyWith(foundDevices: devices.map<BluetoothDevice>((e) => e.device)),
+      onData: (devices) => state.copyWith(
+        foundDevices: devices.map<BluetoothDevice>((e) => e.device),
+      ),
     );
 
     final isScanningTask = emit.forEach(
