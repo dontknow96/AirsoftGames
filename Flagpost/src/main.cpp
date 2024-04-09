@@ -46,4 +46,5 @@ void loop() {
   right->loop();
   
   controller->loop();
+  service->loop();
 }

@@ -6,7 +6,8 @@ part 'device_scanner_state.freezed.dart';
 @freezed
 class DeviceScannerState with _$DeviceScannerState {
   const factory DeviceScannerState({
-    @Default([]) Iterable<ScanResult> devices,
+    @Default([]) Iterable<BluetoothDevice> foundDevices,
+    @Default([]) Iterable<BluetoothDevice> connectedDevices,
     @Default(false) bool scanning,
     @Default(DeviceScannerErrorState.none) DeviceScannerErrorState errorState ,
   }) = _DeviceScannerState;

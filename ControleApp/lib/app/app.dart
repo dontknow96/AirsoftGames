@@ -14,7 +14,7 @@ class AirsoftControleApp extends StatelessWidget {
         BlocProvider(create: (_) => DeviceScannerBloc()),
       ],
       child: MaterialApp.router(
-        routerConfig: AirsoftRouterConfig.createRouter(context),
+        routerConfig: AirsoftRouterConfig.createRouter(),
       ),
     );
   }
