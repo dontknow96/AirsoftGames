@@ -11,7 +11,7 @@
 #include <string>
 #include "Arduino.h"
 
-class SettingsCallbackHandler: public BLECharacteristicCallbacks{
+class GameSettingsCallbackHandler: public BLECharacteristicCallbacks{
 private:
 	Data* data = NULL;
 	GameController* controller = NULL;
@@ -20,5 +20,5 @@ public:
 	virtual void onRead(BLECharacteristic* pCharacteristic);
 	virtual void onWrite(BLECharacteristic* pCharacteristic);
 
-	SettingsCallbackHandler(Data* data, GameController* controller);
+	GameSettingsCallbackHandler(Data* data, GameController* controller);
 };

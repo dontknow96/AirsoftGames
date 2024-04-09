@@ -9,7 +9,8 @@ AirsoftBLEService::AirsoftBLEService(std::string name, Data* data, GameControlle
     this->voltageCallbackHandler = new VoltageCallbackHandler(this->data);
     this->timeCallbackHandler = new TimeCallbackHandler();
     this->gameStateCallbackHandler = new GameStateCallbackHandler(this->data, this->controller);
-    this->settingsCallbackHandler = new SettingsCallbackHandler(this->data, this->controller);
+    this->gameSettingsCallbackHandler = new GameSettingsCallbackHandler(this->data, this->controller);
+    this->deviceSettingsCallbackHandler = new DeviceSettingsCallbackHandler(this->data);
     
 
   //init
@@ -22,6 +23,8 @@ AirsoftBLEService::AirsoftBLEService(std::string name, Data* data, GameControlle
   
 
   // Create a BLE Characteristics
+  //
+  //Voltage
   pVoltageCharacteristic = pService->createCharacteristic(
                       VOLTAGE_CHARACTERISTIC_UUID,
                       BLECharacteristic::PROPERTY_READ
@@ -29,20 +32,33 @@ AirsoftBLEService::AirsoftBLEService(std::string name, Data* data, GameControlle
   pVoltageCharacteristic->setAccessPermissions(ESP_GATT_PERM_READ_ENCRYPTED | ESP_GATT_PERM_WRITE_ENCRYPTED);  
   pVoltageCharacteristic->setCallbacks(this->voltageCallbackHandler);
 
+  
+  //Time
   pTimeCharacteristic = pService->createCharacteristic(
                       TIME_CHARACTERISTIC_UUID,
                       BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE
                     );      
   pTimeCharacteristic->setAccessPermissions(ESP_GATT_PERM_READ_ENCRYPTED | ESP_GATT_PERM_WRITE_ENCRYPTED);      
   pTimeCharacteristic->setCallbacks(this->timeCallbackHandler);
-
-  pSettingsCharacteristic = pService->createCharacteristic(
-                      SETTINGS_CHARACTERISTIC_UUID,
+  
+  //Device Settings
+  pDeviceSettingsCharacteristic = pService->createCharacteristic(
+                      DEVICE_SETTINGS_CHARACTERISTIC_UUID,
                       BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE
                     );      
-  pSettingsCharacteristic->setAccessPermissions(ESP_GATT_PERM_READ_ENCRYPTED | ESP_GATT_PERM_WRITE_ENCRYPTED);      
-  pSettingsCharacteristic->setCallbacks(this->settingsCallbackHandler);
+  pDeviceSettingsCharacteristic->setAccessPermissions(ESP_GATT_PERM_READ_ENCRYPTED | ESP_GATT_PERM_WRITE_ENCRYPTED);      
+  pDeviceSettingsCharacteristic->setCallbacks(this->deviceSettingsCallbackHandler);
 
+  //Game Settings
+  pGameSettingsCharacteristic = pService->createCharacteristic(
+                      GAME_SETTINGS_CHARACTERISTIC_UUID,
+                      BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE
+                    );      
+  pGameSettingsCharacteristic->setAccessPermissions(ESP_GATT_PERM_READ_ENCRYPTED | ESP_GATT_PERM_WRITE_ENCRYPTED);      
+  pGameSettingsCharacteristic->setCallbacks(this->gameSettingsCallbackHandler);
+
+  
+  //Game State
   pGameStateCharacteristic = pService->createCharacteristic(
                       GAME_STATE_CHARACTERISTIC_UUID,
                       BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE
@@ -65,8 +81,12 @@ AirsoftBLEService::AirsoftBLEService(std::string name, Data* data, GameControlle
 
 
 
-void AirsoftBLEService::restartAdvertising(){
-  BLEDevice::startAdvertising();
-  
+void AirsoftBLEService::loop(){
+  unsigned long timestamp = millis();
+  long long timeDiff= std::abs((long long)(timestamp - lastBleAdvertisement));
+
+  if(timeDiff > data->bleAdvertisementInterval){
+    BLEDevice::startAdvertising();
+  }  
 }
 

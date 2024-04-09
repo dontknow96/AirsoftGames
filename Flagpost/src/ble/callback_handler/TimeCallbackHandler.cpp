@@ -1,33 +1,34 @@
 #include "TimeCallbackHandler.h"
 
 void TimeCallbackHandler::onRead(BLECharacteristic* pCharacteristic){
-	time_t now = time(0);
-	tm* localtm = localtime(&now);
+	uint8_t readData[8];
 
-	pCharacteristic->setValue(asctime(localtm));
+    struct timeval now;
+
+	gettimeofday(&now, NULL);
+
+	uint64_t secondsSinceEpoch = now.tv_sec;
+	Serial.println("secondsSinceEpoch");
+	Serial.println(secondsSinceEpoch);
+	Serial.println("tv_sec");
+	Serial.println(now.tv_sec);
+
+	writeUint64ToUint8Array(readData+0, &secondsSinceEpoch);	
+
+	pCharacteristic->setValue(readData,8);
 }
 
 void TimeCallbackHandler::onWrite(BLECharacteristic* pCharacteristic){
 	uint8_t* values = pCharacteristic->getData();
-
-	int year = (*(values) << 8) + *(values+1);
-	int month = *(values+2);
-	int day = *(values+3);
-	int hour = *(values+4);
-	int minute = *(values+5);
-	int second = *(values+6);
 	
-	struct tm tm;
-    tm.tm_year = year - 1900;
-    tm.tm_mon = month;
-    tm.tm_mday = day;
-    tm.tm_hour = hour;
-    tm.tm_min = minute;
-    tm.tm_sec = second;
+	uint64_t secondsSinceEpoch = 0;
+	writeUint8ArrayToUint64(&secondsSinceEpoch, values+0);
+	Serial.println("secondsSinceEpoch");
+	Serial.println(secondsSinceEpoch);
 
-    time_t t = mktime(&tm);
-
-    struct timeval now = { .tv_sec = t };
+    struct timeval now = { .tv_sec = (long int)secondsSinceEpoch};
+	Serial.println("tv_sec");
+	Serial.println(now.tv_sec);
 
     settimeofday(&now, NULL);
 }

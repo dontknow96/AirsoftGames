@@ -12,9 +12,12 @@ struct Data
     bool rightButtonPressed = false;
     float voltage = 0.0;
 
-    //settings
+    //device settings
     u_int16_t batterymeasureInterval = 100;
     u_int16_t displaySetInterval = 100;
+    u_int16_t bleAdvertisementInterval = 10000;
+    
+    //game settings
     u_int64_t unclaimTime = 2000;
     u_int64_t claimTime = 4000;
     char teamNameLeft = 'R';
