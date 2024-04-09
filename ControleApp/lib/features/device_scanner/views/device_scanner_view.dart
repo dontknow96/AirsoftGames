@@ -4,11 +4,12 @@ import 'package:controleapp/features/device_scanner/blocs/device_scanner_state.d
 import 'package:controleapp/features/device_scanner/widgets/device_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 class DeviceScannerView extends StatelessWidget {
-  const DeviceScannerView({required this.deviceSiteRoute, super.key});
+  const DeviceScannerView({required this.onConnect, super.key});
 
-  final String deviceSiteRoute;
+  final void Function(BluetoothDevice) onConnect;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +23,10 @@ class DeviceScannerView extends StatelessWidget {
           ),
           body: Column(
             children: [
-              for (final item in state.devices)
+              for (final scanResult in state.devices)
                 DeviceTile(
-                  deviceIdentifier: item.device.remoteId,
-                  deviceName: item.device.advName,
-                  deviceSiteRoute: deviceSiteRoute,
+                  onConnect: onConnect,
+                  scanResult: scanResult,
                 ),
             ],
           ),

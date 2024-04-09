@@ -6,20 +6,25 @@ import 'package:go_router/go_router.dart';
 class AirsoftRouterConfig {
   static const home = '/';
   static const scanner = '/scanner';
-  static const flagPostDevice = '/flagpost/:device';
-  static const flagPostDeviceUnparameted = '/flagpost';
+  static const flagPostDevice = '/flagpost';
 
-  static List<RouteBase> routes() => [
+  static List<RouteBase> routes(BuildContext context) => [
         GoRoute(
           path: home,
-          builder: (_, __) => const DeviceScannerView(
-            deviceSiteRoute: flagPostDeviceUnparameted,
+          builder: (_, __) => DeviceScannerView(
+            onConnect: (device) => GoRouter.of(context).go(
+              flagPostDevice,
+              extra: device,
+            ),
           ),
         ),
         GoRoute(
           path: scanner,
-          builder: (_, __) => const DeviceScannerView(
-            deviceSiteRoute: flagPostDeviceUnparameted,
+          builder: (_, __) => DeviceScannerView(
+            onConnect: (device) => GoRouter.of(context).go(
+              flagPostDevice,
+              extra: device,
+            ),
           ),
         ),
         GoRoute(
@@ -29,6 +34,6 @@ class AirsoftRouterConfig {
       ];
 
   static GoRouter createRouter(BuildContext context) => GoRouter(
-        routes: routes(),
+        routes: routes(context),
       );
 }
