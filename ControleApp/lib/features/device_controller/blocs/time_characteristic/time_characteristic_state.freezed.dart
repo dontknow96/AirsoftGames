@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TimeCharacteristicState {
-  List<int> get data => throw _privateConstructorUsedError;
+  DateTime get time => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TimeCharacteristicStateCopyWith<TimeCharacteristicState> get copyWith =>
@@ -29,7 +29,7 @@ abstract class $TimeCharacteristicStateCopyWith<$Res> {
           $Res Function(TimeCharacteristicState) then) =
       _$TimeCharacteristicStateCopyWithImpl<$Res, TimeCharacteristicState>;
   @useResult
-  $Res call({List<int> data});
+  $Res call({DateTime time});
 }
 
 /// @nodoc
@@ -46,13 +46,13 @@ class _$TimeCharacteristicStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? time = null,
   }) {
     return _then(_value.copyWith(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+      time: null == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -66,7 +66,7 @@ abstract class _$$TimeCharacteristicStateImplCopyWith<$Res>
       __$$TimeCharacteristicStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<int> data});
+  $Res call({DateTime time});
 }
 
 /// @nodoc
@@ -82,13 +82,13 @@ class __$$TimeCharacteristicStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? time = null,
   }) {
     return _then(_$TimeCharacteristicStateImpl(
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+      time: null == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -96,21 +96,14 @@ class __$$TimeCharacteristicStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$TimeCharacteristicStateImpl implements _TimeCharacteristicState {
-  const _$TimeCharacteristicStateImpl({final List<int> data = const []})
-      : _data = data;
+  const _$TimeCharacteristicStateImpl({required this.time});
 
-  final List<int> _data;
   @override
-  @JsonKey()
-  List<int> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
-  }
+  final DateTime time;
 
   @override
   String toString() {
-    return 'TimeCharacteristicState(data: $data)';
+    return 'TimeCharacteristicState(time: $time)';
   }
 
   @override
@@ -118,12 +111,11 @@ class _$TimeCharacteristicStateImpl implements _TimeCharacteristicState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TimeCharacteristicStateImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            (identical(other.time, time) || other.time == time));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(runtimeType, time);
 
   @JsonKey(ignore: true)
   @override
@@ -134,11 +126,11 @@ class _$TimeCharacteristicStateImpl implements _TimeCharacteristicState {
 }
 
 abstract class _TimeCharacteristicState implements TimeCharacteristicState {
-  const factory _TimeCharacteristicState({final List<int> data}) =
+  const factory _TimeCharacteristicState({required final DateTime time}) =
       _$TimeCharacteristicStateImpl;
 
   @override
-  List<int> get data;
+  DateTime get time;
   @override
   @JsonKey(ignore: true)
   _$$TimeCharacteristicStateImplCopyWith<_$TimeCharacteristicStateImpl>

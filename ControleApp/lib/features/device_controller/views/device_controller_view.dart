@@ -17,13 +17,15 @@ class DeviceControllerView extends StatelessWidget {
           DeviceControllerBloc(DeviceControllerState(device: device)),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Find Devices'),
+          title: Text(
+            device.advName == '' ? device.remoteId.str : device.advName,
+          ),
         ),
         body: BlocBuilder<DeviceControllerBloc, DeviceControllerState>(
           builder: (BuildContext context, state) {
             return Column(
               children: [
-                for(final characteristic in state.characteristics)
+                for (final characteristic in state.characteristics)
                   AirsoftCharacteristicTile(characteristic: characteristic),
               ],
             );

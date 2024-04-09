@@ -5,6 +5,6 @@ part 'time_characteristic_state.freezed.dart';
 @freezed
 class TimeCharacteristicState with _$TimeCharacteristicState {
   const factory TimeCharacteristicState({
-    @Default([]) List<int> data,
+    required DateTime time,
   }) = _TimeCharacteristicState;
 }
